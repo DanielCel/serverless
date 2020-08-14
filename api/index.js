@@ -1,12 +1,14 @@
-
 const express = require("express");
+const mongoose = require('mongoose')
 const app = express();
 
-const port = 3000;
+mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser:true, useUnifiedTopology: true})
+const Users = mongoose.model('User', new mongoose.Schema({name:String}))
+Users.create({name:"chanchito nuevo"})
 
 app.get('*',(req,res) => {
-  console.log('hola mundo')
-  res.send({mensaje:"andres chanchito"})
+  Users.find().then(x=>res.send(x))
+  console.log('nuevo usuario creado')
 })
 /* Listen on port 5000
 app.listen(port, () => {
