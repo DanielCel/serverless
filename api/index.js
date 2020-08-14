@@ -5,7 +5,7 @@ const port = 3000;
 
 app.get('*',(req,res) => {
   console.log('hola mundo')
-  res.send({mensaje:"andres triste y feliz"})
+  res.send({mensaje:"andresy feliz"})
 })
 /* Listen on port 5000
 app.listen(port, () => {
